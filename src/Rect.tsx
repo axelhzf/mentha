@@ -43,7 +43,7 @@ export function Rect(props: Props) {
           <feGaussianBlur stdDeviation="1.5" />
           <feColorMatrix
             type="matrix"
-            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"
+            values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"
           />
           <feBlend
             mode="normal"

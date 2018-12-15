@@ -8,7 +8,7 @@ export function Canvas(props: { children: React.ReactNode }) {
 const Container = styled.svg`
   top: 0px;
   user-select: none;
-  background-color: rgb(240, 244, 247);
+  background-color: #f0f4f7;
   width: 100%;
   cursor: default;
   padding: 0px;
