@@ -25,6 +25,7 @@ export function App() {
       <Canvas>
         {state.visualObjects.map(vo => (
           <Rect
+            id={vo.id}
             key={vo.id}
             x={vo.x}
             y={vo.y}
