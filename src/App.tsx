@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react';
 
-import { Canvas } from "./Canvas";
-import { NavBar } from "./NavBar";
-import { Rect } from "./Rect";
-import { GlobalStyle } from "./styled";
+import { Canvas } from './Canvas';
+import { NavBar } from './NavBar';
+import { Rect } from './Rect';
+import { GlobalStyle } from './styled';
 
 export function App() {
   return (

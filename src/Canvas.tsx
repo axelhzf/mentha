@@ -1,5 +1,5 @@
-import React from "react";
-import {styled} from "./styled";
+import React from 'react';
+import { styled } from './styled';
 
 export function Canvas(props: { children: React.ReactNode }) {
   return <Container>{props.children}</Container>;

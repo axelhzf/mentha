@@ -8,6 +8,9 @@
     "@types/react": "^16.7.17",
     "@types/react-dom": "^16.0.11",
     "@types/styled-components": "^4.1.4",
+    "husky": "^1.2.1",
+    "lint-staged": "^8.1.0",
+    "prettier": "^1.15.3",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1",
@@ -20,7 +23,19 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "now-build": "yarn build"
+    "now-build": "yarn build",
+    "prettier": "prettier --write \"src/**/*.{ts,tsx}\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/*.{ts,tsx,json}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -1,5 +1,5 @@
 import React from 'react';
-import {styled} from './styled';
+import { styled } from './styled';
 
 export function NavBar() {
   return (
@@ -21,7 +21,7 @@ const NavBarContainer = styled.div`
   padding: 0 40px;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 4px rgba(0,0,0,.15);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 `;
 
 const Logo = styled.div`
