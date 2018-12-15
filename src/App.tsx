@@ -5,11 +5,12 @@ import { Rect } from './Rect';
 import { Action, reducer, State } from './State';
 import { GlobalStyle } from './styled';
 import { Toolbar } from './Toolbar';
+import { uuid } from './uuid';
 
 const initialState: State = {
   visualObjects: [
-    { id: '1', type: 'rect', x: 200, y: 200, width: 200, height: 200 },
-    { id: '2', type: 'rect', x: 700, y: 200, width: 50, height: 50 }
+    { id: uuid(), type: 'rect', x: 200, y: 200, width: 200, height: 200 },
+    { id: uuid(), type: 'rect', x: 700, y: 200, width: 50, height: 50 }
   ]
 };
 

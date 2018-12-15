@@ -1,6 +1,7 @@
 import { random } from 'lodash';
 import { uuid } from './uuid';
 import { VisualObject, VisualObjectRect } from './VisualObjects';
+import produce from 'immer';
 
 export type State = {
   visualObjects: VisualObject[];
@@ -23,7 +24,9 @@ export function reducer(state: State, action: Action) {
         width: random(0, 400),
         height: random(0, 400)
       };
-      return { ...state, visualObjects: [...state.visualObjects, newRect] };
+      return produce(state, s => {
+        s.visualObjects.push(newRect);
+      });
     }
   }
   return state;

@@ -10,6 +10,7 @@
     "@types/react-dom": "^16.0.11",
     "@types/styled-components": "^4.1.4",
     "husky": "^1.2.1",
+    "immer": "^1.8.2",
     "lint-staged": "^8.1.0",
     "lodash": "^4.17.11",
     "prettier": "^1.15.3",
