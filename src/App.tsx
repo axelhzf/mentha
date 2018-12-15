@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import styled, { createGlobalStyle } from "styled-components/macro";
+import { Canvas } from "./Canvas";
+import { NavBar } from "./NavBar";
+import { Rect } from "./Rect";
 
 class App extends Component {
   render() {
@@ -7,9 +10,11 @@ class App extends Component {
       <>
         <GlobalStyle />
         <Container>
-          <Header>
-            <p>Mentha</p>
-          </Header>
+          <Canvas>
+            <Rect x={200} y={200} width={200} height={200} />
+            <Rect x={700} y={200} width={50} height={50} />
+          </Canvas>
+          <NavBar />
         </Container>
       </>
     );
@@ -33,17 +38,5 @@ const GlobalStyle = createGlobalStyle`
 const Container = styled.div`
   text-align: center;
 `;
-
-const Header = styled.header`
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-`;
-
 
 export default App;
