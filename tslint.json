@@ -8,6 +8,7 @@
     "interface-over-type-literal": false,
     "jsx-no-lambda": false,
     "ordered-imports": false,
-    "object-literal-sort-keys": false
+    "object-literal-sort-keys": false,
+    "curly": [true, "ignore-same-line"]
   }
 }
