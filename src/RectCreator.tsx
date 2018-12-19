@@ -3,11 +3,10 @@ import { uuid } from './uuid';
 import { Rect } from './Rect';
 import { useImmer } from './useImmer';
 import { Dispatch } from './State';
-import { Point, getRectangle } from './geometry';
+import { Point } from './geometry';
 
 type State = {
-  click?: Point;
-  move?: Point;
+  mousePosition?: Point;
 };
 
 function getPoint(e: MouseEvent) {
@@ -17,45 +16,50 @@ function getPoint(e: MouseEvent) {
   };
 }
 
+const DEFAULT_WIDTH = 200;
+const DEFAULT_HEIGHT = 100;
+
 export function RectCreator(props: { dispatch: Dispatch }) {
   const id = React.useMemo(() => uuid(), []);
   const [state, setState] = useImmer<State>({});
 
-  function clickListener(e: MouseEvent) {
-    setState(s => {
-      const point = getPoint(e);
-      if (!s.click) {
-        s.click = point;
-        s.move = point;
-      } else {
-        props.dispatch({
-          type: 'add-rect',
-          rectangle: getRectangle(s.click, point)
-        });
-        s.click = undefined;
-        s.move = undefined;
-      }
-    });
-  }
-
   function moveListener(e: MouseEvent) {
     setState(s => {
-      s.move = getPoint(e);
+      s.mousePosition = getPoint(e);
     });
   }
 
+  function clickListener(e: MouseEvent) {
+    const point = getPoint(e);
+    props.dispatch({
+      type: 'add-rect',
+      rectangle: {
+        x: point.x,
+        y: point.y,
+        width: DEFAULT_WIDTH,
+        height: DEFAULT_HEIGHT
+      }
+    });
+    props.dispatch({ type: 'set-tool', tool: null });
+  }
+
   React.useEffect(() => {
+    document.addEventListener('mousemove', moveListener);
     document.addEventListener('click', clickListener);
-    return () => document.removeEventListener('click', clickListener);
+    return () => {
+      document.removeEventListener('mousemove', moveListener);
+      document.removeEventListener('click', clickListener);
+    };
   });
 
-  React.useEffect(() => {
-    if (state.click) {
-      document.addEventListener('mousemove', moveListener);
-      return () => document.removeEventListener('mousemove', moveListener);
-    }
-  });
-
-  if (!state.click || !state.move) return null;
-  return <Rect id={id} {...getRectangle(state.click, state.move)} />;
+  if (!state.mousePosition) return null;
+  return (
+    <Rect
+      id={id}
+      x={state.mousePosition.x}
+      y={state.mousePosition.y}
+      width={DEFAULT_WIDTH}
+      height={DEFAULT_HEIGHT}
+    />
+  );
 }
