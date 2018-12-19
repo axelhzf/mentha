@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dispatch, Tool } from './State';
 import { styled } from './styled';
+import { RectangleIcon } from './icons/RectangleIcon';
 
 type Props = {
   activeTool: Tool | null;
@@ -21,7 +22,7 @@ export function Toolbar(props: Props) {
         onClick={() => toggleTool(Tool.rectangle)}
         active={props.activeTool === Tool.rectangle}
       >
-        Rect
+        <RectangleIcon />
       </ToolbarButton>
     </ToolbarContainer>
   );
@@ -40,7 +41,11 @@ const ToolbarButton = styled.button<{ active?: boolean }>`
   background: ${props => (props.active ? '#545d6d' : 'none')}
   border: none;
   color: white;
-  font-size: 14px;
-  padding: 8px;
   cursor: pointer;
+  display: flex;
+  padding: 4px;
+  
+  &:hover {
+    background: #545d6d;
+  }
 `;

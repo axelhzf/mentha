@@ -19,7 +19,7 @@ function getPoint(e: MouseEvent) {
 const DEFAULT_WIDTH = 200;
 const DEFAULT_HEIGHT = 100;
 
-export function RectCreator(props: { dispatch: Dispatch }) {
+export function RectangleCreator(props: { dispatch: Dispatch }) {
   const id = React.useMemo(() => uuid(), []);
   const [state, setState] = useImmer<State>({});
 
