@@ -2,6 +2,8 @@ import React from 'react';
 import { Dispatch, Tool } from './State';
 import { styled } from './styled';
 import { RectangleIcon } from './icons/RectangleIcon';
+import { TooltipProps } from 'react-popper-tooltip';
+import { ToolbarButton } from './ToolbarButton';
 
 type Props = {
   activeTool: Tool | null;
@@ -19,8 +21,9 @@ export function Toolbar(props: Props) {
   return (
     <ToolbarContainer>
       <ToolbarButton
-        onClick={() => toggleTool(Tool.rectangle)}
         active={props.activeTool === Tool.rectangle}
+        tooltip="Add Shape"
+        onClick={() => toggleTool(Tool.rectangle)}
       >
         <RectangleIcon />
       </ToolbarButton>
@@ -35,17 +38,4 @@ const ToolbarContainer = styled.div`
   background: #282c34;
   color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
-`;
-
-const ToolbarButton = styled.button<{ active?: boolean }>`
-  background: ${props => (props.active ? '#545d6d' : 'none')}
-  border: none;
-  color: white;
-  cursor: pointer;
-  display: flex;
-  padding: 4px;
-  
-  &:hover {
-    background: #545d6d;
-  }
 `;
